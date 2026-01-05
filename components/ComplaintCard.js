@@ -13,11 +13,11 @@ export default function ComplaintCard({ complaint, onClick }) {
     return (
         <div
             onClick={onClick}
-            className="bg-white rounded-xl border border-slate-200 p-5 cursor-pointer hover:shadow-md hover:border-slate-300 transition-all group"
+            className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 cursor-pointer hover:shadow-md hover:border-slate-300 transition-all group active:scale-[0.99]"
         >
             {/* Header */}
             <div className="flex items-start justify-between mb-3">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                     <div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-white font-semibold text-sm">
                         {complaint.studentName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
                     </div>

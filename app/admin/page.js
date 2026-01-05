@@ -12,7 +12,8 @@ import {
     Clock,
     CheckCircle,
     Search,
-    RefreshCw
+    RefreshCw,
+    Menu
 } from 'lucide-react';
 
 const priorityFilters = [
@@ -38,6 +39,7 @@ export default function AdminDashboard() {
     const [searchQuery, setSearchQuery] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [stats, setStats] = useState({ total: 0, highPriority: 0, pending: 0, resolved: 0 });
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -105,34 +107,46 @@ export default function AdminDashboard() {
 
     return (
         <div className="flex min-h-screen bg-slate-50">
-            <AdminSidebar />
+            <AdminSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
             <main className="flex-1 overflow-auto">
                 {/* Header */}
-                <div className="bg-white border-b border-slate-200 px-8 py-6">
-                    <h1 className="text-2xl font-bold text-slate-900">Dashboard</h1>
-                    <p className="text-slate-500 mt-1">Manage student complaints</p>
+                <div className="bg-white border-b border-slate-200 px-4 sm:px-6 lg:px-8 py-4 lg:py-6">
+                    <div className="flex items-center gap-4">
+                        {/* Mobile Menu Button */}
+                        <button
+                            onClick={() => setSidebarOpen(true)}
+                            className="lg:hidden p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
+                        >
+                            <Menu className="h-6 w-6" />
+                        </button>
+
+                        <div>
+                            <h1 className="text-xl lg:text-2xl font-bold text-slate-900">Dashboard</h1>
+                            <p className="text-sm text-slate-500 mt-0.5 hidden sm:block">Manage student complaints</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div className="p-8">
+                <div className="p-4 sm:p-6 lg:p-8">
                     {/* Stats Cards */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 lg:mb-8">
                         {statCards.map((stat) => {
                             const Icon = stat.icon;
                             return (
                                 <div
                                     key={stat.label}
-                                    className="bg-white rounded-xl p-5 border border-slate-200"
+                                    className="bg-white rounded-xl p-4 sm:p-5 border border-slate-200"
                                 >
-                                    <div className="flex items-center justify-between mb-3">
-                                        <div className={`w-10 h-10 rounded-lg ${stat.bgColor} flex items-center justify-center`}>
-                                            <Icon className={`h-5 w-5 ${stat.iconColor}`} />
+                                    <div className="flex items-center justify-between mb-2 sm:mb-3">
+                                        <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg ${stat.bgColor} flex items-center justify-center`}>
+                                            <Icon className={`h-4 w-4 sm:h-5 sm:w-5 ${stat.iconColor}`} />
                                         </div>
                                     </div>
-                                    <div className="text-2xl font-bold text-slate-900">
+                                    <div className="text-xl sm:text-2xl font-bold text-slate-900">
                                         {stat.value}
                                     </div>
-                                    <div className="text-sm text-slate-500 mt-1">
+                                    <div className="text-xs sm:text-sm text-slate-500 mt-1">
                                         {stat.label}
                                     </div>
                                 </div>
@@ -141,31 +155,31 @@ export default function AdminDashboard() {
                     </div>
 
                     {/* Filters */}
-                    <div className="bg-white rounded-xl border border-slate-200 p-5 mb-6" id="complaints">
-                        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <div className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 mb-6" id="complaints">
+                        <div className="flex flex-col gap-4">
                             {/* Search */}
-                            <div className="relative flex-1 max-w-md">
+                            <div className="relative w-full lg:max-w-md">
                                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
                                 <input
                                     type="text"
                                     placeholder="Search complaints..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-slate-400 focus:border-transparent"
+                                    className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-slate-400 focus:border-transparent text-base"
                                 />
                             </div>
 
-                            {/* Filters */}
-                            <div className="flex items-center gap-3">
+                            {/* Filters Row */}
+                            <div className="flex items-center gap-3 overflow-x-auto pb-1 -mx-1 px-1">
                                 {/* Priority Filter */}
-                                <div className="flex border border-slate-200 rounded-lg overflow-hidden">
+                                <div className="flex border border-slate-200 rounded-lg overflow-hidden flex-shrink-0">
                                     {priorityFilters.map((filter) => (
                                         <button
                                             key={filter.id}
                                             onClick={() => setPriorityFilter(filter.id)}
-                                            className={`px-3 py-2 text-sm font-medium transition-colors ${priorityFilter === filter.id
-                                                    ? 'bg-slate-900 text-white'
-                                                    : 'bg-white text-slate-600 hover:bg-slate-50'
+                                            className={`px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap ${priorityFilter === filter.id
+                                                ? 'bg-slate-900 text-white'
+                                                : 'bg-white text-slate-600 hover:bg-slate-50'
                                                 }`}
                                         >
                                             {filter.label}
