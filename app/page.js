@@ -19,19 +19,19 @@ const features = [
         icon: Sparkles,
         title: 'AI-Powered Analysis',
         description: 'Our advanced AI automatically categorizes and summarizes complaints, extracting key issues and sentiments.',
-        color: 'teal',
+        color: 'slate',
     },
     {
         icon: Gauge,
         title: 'Smart Priority Detection',
         description: 'Intelligent algorithms identify urgent issues and prioritize high-impact complaints automatically.',
-        color: 'amber',
+        color: 'slate',
     },
     {
         icon: Shield,
         title: 'Secure & Confidential',
         description: 'Enterprise-grade security ensures all student data and complaints remain private and protected.',
-        color: 'indigo',
+        color: 'slate',
     },
 ];
 
@@ -65,15 +65,15 @@ export default function Home() {
                 {/* Background Pattern */}
                 <div className="absolute inset-0 gradient-hero" />
                 <div className="absolute inset-0 opacity-30">
-                    <div className="absolute top-20 left-10 w-72 h-72 bg-teal-200 rounded-full blur-3xl animate-float" />
-                    <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-200 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+                    <div className="absolute top-20 left-10 w-72 h-72 bg-slate-200 rounded-full blur-3xl animate-float" />
+                    <div className="absolute bottom-20 right-10 w-96 h-96 bg-slate-300 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
                 </div>
 
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
                     <div className="text-center max-w-4xl mx-auto">
                         {/* Badge */}
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-slate-200 mb-8 animate-fade-in">
-                            <Sparkles className="h-4 w-4 text-teal-600" />
+                            <Sparkles className="h-4 w-4 text-slate-600" />
                             <span className="text-sm font-medium text-slate-700">
                                 Powered by Advanced AI Technology
                             </span>
@@ -96,22 +96,22 @@ export default function Home() {
                         </div>
 
                         {/* Headline */}
-                        <h2 className="text-2xl lg:text-4xl font-bold text-slate-800 mb-6 animate-slide-up stagger-1">
+                        <h2 className="text-2xl lg:text-4xl font-bold text-slate-800 mb-6 animate-slide-up">
                             AI-Powered College{' '}
                             <span className="text-gradient">Grievance Management</span>
                         </h2>
 
                         {/* Subtitle */}
-                        <p className="text-lg lg:text-xl text-slate-600 mb-10 max-w-2xl mx-auto animate-slide-up stagger-2">
+                        <p className="text-lg lg:text-xl text-slate-600 mb-10 max-w-2xl mx-auto animate-slide-up">
                             Helping institutions identify and prioritize critical student complaints using artificial intelligence.
                             Transform how your college handles grievances.
                         </p>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up stagger-3">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up">
                             <Link
                                 href="/submit-complaint"
-                                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white bg-teal-600 hover:bg-teal-700 rounded-xl transition-all shadow-lg shadow-teal-200 hover:shadow-xl hover:shadow-teal-300 hover:-translate-y-0.5"
+                                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                             >
                                 Submit a Complaint
                                 <ArrowRight className="h-5 w-5" />
@@ -139,8 +139,8 @@ export default function Home() {
                                     className="text-center animate-slide-up"
                                     style={{ animationDelay: `${index * 0.1}s` }}
                                 >
-                                    <div className="inline-flex items-center justify-center w-12 h-12 bg-teal-100 rounded-xl mb-4">
-                                        <Icon className="h-6 w-6 text-teal-600" />
+                                    <div className="inline-flex items-center justify-center w-12 h-12 bg-slate-100 rounded-xl mb-4">
+                                        <Icon className="h-6 w-6 text-slate-600" />
                                     </div>
                                     <div className="text-3xl lg:text-4xl font-bold text-slate-900 mb-1">
                                         {stat.value}
@@ -171,9 +171,9 @@ export default function Home() {
                         {features.map((feature, index) => {
                             const Icon = feature.icon;
                             const colorClasses = {
-                                teal: 'bg-teal-100 text-teal-600',
-                                amber: 'bg-amber-100 text-amber-600',
-                                indigo: 'bg-indigo-100 text-indigo-600',
+                                indigo: 'bg-slate-100 text-slate-600',
+                                violet: 'bg-slate-100 text-slate-600',
+                                slate: 'bg-slate-100 text-slate-600',
                             };
 
                             return (
@@ -212,7 +212,7 @@ export default function Home() {
 
                     <div className="grid md:grid-cols-3 gap-8 relative">
                         {/* Connecting Line */}
-                        <div className="hidden md:block absolute top-12 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-teal-200 via-teal-400 to-teal-200" />
+                        <div className="hidden md:block absolute top-12 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-slate-200 via-slate-400 to-slate-200" />
 
                         {[
                             { step: '01', title: 'Submit Complaint', desc: 'Students submit their grievances through our simple, user-friendly form.' },
@@ -224,7 +224,7 @@ export default function Home() {
                                 className="relative text-center animate-slide-up"
                                 style={{ animationDelay: `${index * 0.15}s` }}
                             >
-                                <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full text-white text-2xl font-bold mb-6 shadow-lg relative z-10">
+                                <div className="inline-flex items-center justify-center w-24 h-24 bg-slate-900 rounded-full text-white text-2xl font-bold mb-6 shadow-lg relative z-10">
                                     {item.step}
                                 </div>
                                 <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -279,17 +279,17 @@ export default function Home() {
             {/* CTA Section */}
             <section className="py-20">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="bg-gradient-to-r from-teal-600 to-emerald-600 rounded-3xl p-12 shadow-2xl">
+                    <div className="bg-slate-900 rounded-3xl p-12 shadow-2xl">
                         <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                             Ready to Transform Your Institution?
                         </h2>
-                        <p className="text-lg text-teal-100 mb-8 max-w-2xl mx-auto">
+                        <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
                             Join hundreds of colleges using Resolvo to improve student satisfaction and streamline complaint resolution.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <Link
                                 href="/submit-complaint"
-                                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-teal-700 bg-white hover:bg-teal-50 rounded-xl transition-all shadow-lg hover:-translate-y-0.5"
+                                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-slate-900 bg-white hover:bg-slate-100 rounded-xl transition-all shadow-lg hover:-translate-y-0.5"
                             >
                                 Get Started Free
                                 <ArrowRight className="h-5 w-5" />

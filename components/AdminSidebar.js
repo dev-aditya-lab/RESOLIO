@@ -72,13 +72,13 @@ export default function AdminSidebar() {
                                     className={`
                     flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all
                     ${isActive
-                                            ? 'bg-teal-50 text-teal-700 border border-teal-100'
-                                            : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                                            ? 'bg-slate-900 text-white'
+                                            : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                                         }
                   `}
                                     title={collapsed ? link.label : undefined}
                                 >
-                                    <Icon className={`h-5 w-5 flex-shrink-0 ${isActive ? 'text-teal-600' : 'text-slate-400'}`} />
+                                    <Icon className={`h-5 w-5 flex-shrink-0 ${isActive ? 'text-white' : 'text-slate-400'}`} />
                                     {!collapsed && (
                                         <span className="text-sm font-medium">
                                             {link.label}
@@ -101,7 +101,7 @@ export default function AdminSidebar() {
                             <li key={link.href}>
                                 <Link
                                     href={link.href}
-                                    className="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg transition-all"
+                                    className="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900 rounded-lg transition-all"
                                     title={collapsed ? link.label : undefined}
                                 >
                                     <Icon className="h-5 w-5 flex-shrink-0 text-slate-400" />
@@ -138,7 +138,7 @@ export default function AdminSidebar() {
             <div className="p-3 border-t border-slate-100">
                 <Link
                     href="/"
-                    className="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg transition-all"
+                    className="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900 rounded-lg transition-all"
                     title={collapsed ? 'Exit Admin' : undefined}
                 >
                     <LogOut className="h-5 w-5 flex-shrink-0 text-slate-400" />

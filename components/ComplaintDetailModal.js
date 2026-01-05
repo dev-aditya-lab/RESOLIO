@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { formatDate, STATUS_TYPES } from '@/lib/mockData';
+import { formatDate } from '@/lib/mockData';
 import { updateComplaintStatus } from '@/lib/mockServices';
 import PriorityBadge from './PriorityBadge';
 import StatusBadge from './StatusBadge';
@@ -25,7 +25,6 @@ export default function ComplaintDetailModal({ complaint, onClose, onStatusUpdat
     const handleStatusToggle = async () => {
         setIsUpdating(true);
 
-        // Toggle between PENDING and REVIEWED
         const newStatus = currentStatus === 'PENDING' ? 'REVIEWED' :
             currentStatus === 'REVIEWED' ? 'RESOLVED' :
                 currentStatus === 'RESOLVED' ? 'PENDING' : 'REVIEWED';
@@ -80,7 +79,7 @@ export default function ComplaintDetailModal({ complaint, onClose, onStatusUpdat
                     {/* Header */}
                     <div className="flex items-center justify-between p-6 border-b border-slate-200">
                         <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white font-bold">
+                            <div className="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold">
                                 {complaint.studentName.split(' ').map(n => n[0]).join('').substring(0, 2)}
                             </div>
                             <div>
@@ -147,12 +146,12 @@ export default function ComplaintDetailModal({ complaint, onClose, onStatusUpdat
                         </div>
 
                         {/* AI Summary */}
-                        <div className="bg-gradient-to-r from-teal-50 to-emerald-50 rounded-xl p-5 border border-teal-100">
+                        <div className="bg-slate-50 rounded-xl p-5 border border-slate-200">
                             <div className="flex items-center gap-2 mb-2">
-                                <Sparkles className="h-5 w-5 text-teal-600" />
-                                <h3 className="font-semibold text-teal-800">AI Analysis Summary</h3>
+                                <Sparkles className="h-5 w-5 text-slate-500" />
+                                <h3 className="font-semibold text-slate-700">AI Analysis Summary</h3>
                             </div>
-                            <p className="text-sm text-teal-900">
+                            <p className="text-sm text-slate-700">
                                 {complaint.aiSummary}
                             </p>
                         </div>
@@ -190,7 +189,7 @@ export default function ComplaintDetailModal({ complaint, onClose, onStatusUpdat
                   inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg transition-colors
                   ${currentStatus === 'RESOLVED'
                                         ? 'bg-amber-500 hover:bg-amber-600 text-white'
-                                        : 'bg-teal-600 hover:bg-teal-700 text-white'
+                                        : 'bg-slate-900 hover:bg-slate-800 text-white'
                                     }
                   ${isUpdating ? 'opacity-75 cursor-not-allowed' : ''}
                 `}

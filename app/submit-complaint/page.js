@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import { COMPLAINT_CATEGORIES } from '@/lib/mockData';
@@ -30,7 +29,7 @@ export default function SubmitComplaint() {
     });
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitState, setSubmitState] = useState('idle'); // idle, processing, success
+    const [submitState, setSubmitState] = useState('idle');
     const [result, setResult] = useState(null);
 
     const validateForm = () => {
@@ -59,7 +58,6 @@ export default function SubmitComplaint() {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
-        // Clear error when user starts typing
         if (errors[name]) {
             setErrors(prev => ({ ...prev, [name]: '' }));
         }
@@ -99,8 +97,8 @@ export default function SubmitComplaint() {
             <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {/* Header */}
                 <div className="text-center mb-10">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-6">
-                        <FileText className="h-8 w-8 text-teal-600" />
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-slate-100 rounded-2xl mb-6">
+                        <FileText className="h-8 w-8 text-slate-600" />
                     </div>
                     <h1 className="text-3xl font-bold text-slate-900 mb-3">
                         Submit a Complaint
@@ -113,7 +111,7 @@ export default function SubmitComplaint() {
                 {/* Success State */}
                 {submitState === 'success' && result && (
                     <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden animate-scale-in">
-                        <div className="bg-gradient-to-r from-emerald-500 to-teal-500 p-8 text-center">
+                        <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 p-8 text-center">
                             <div className="inline-flex items-center justify-center w-20 h-20 bg-white rounded-full mb-4">
                                 <CheckCircle className="h-10 w-10 text-emerald-500" />
                             </div>
@@ -127,41 +125,41 @@ export default function SubmitComplaint() {
 
                         <div className="p-8 space-y-6">
                             {/* AI Analysis Result */}
-                            <div className="bg-teal-50 rounded-xl p-6 border border-teal-100">
+                            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
                                 <div className="flex items-center gap-2 mb-4">
-                                    <Sparkles className="h-5 w-5 text-teal-600" />
-                                    <h3 className="font-semibold text-teal-800">AI Analysis Result</h3>
+                                    <Sparkles className="h-5 w-5 text-slate-600" />
+                                    <h3 className="font-semibold text-slate-800">AI Analysis Result</h3>
                                 </div>
 
                                 <div className="grid sm:grid-cols-2 gap-4">
                                     <div>
-                                        <p className="text-xs text-teal-600 mb-1">Complaint ID</p>
-                                        <p className="font-semibold text-teal-900">{result.complaint.id}</p>
+                                        <p className="text-xs text-slate-600 mb-1">Complaint ID</p>
+                                        <p className="font-semibold text-slate-900">{result.complaint.id}</p>
                                     </div>
                                     <div>
-                                        <p className="text-xs text-teal-600 mb-1">Category</p>
-                                        <p className="font-semibold text-teal-900">{result.complaint.categoryLabel}</p>
+                                        <p className="text-xs text-slate-600 mb-1">Category</p>
+                                        <p className="font-semibold text-slate-900">{result.complaint.categoryLabel}</p>
                                     </div>
                                     <div>
-                                        <p className="text-xs text-teal-600 mb-1">Priority Level</p>
+                                        <p className="text-xs text-slate-600 mb-1">Priority Level</p>
                                         <span className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${result.complaint.priority === 'HIGH'
-                                                ? 'bg-red-100 text-red-700'
-                                                : result.complaint.priority === 'MEDIUM'
-                                                    ? 'bg-amber-100 text-amber-700'
-                                                    : 'bg-emerald-100 text-emerald-700'
+                                            ? 'bg-red-100 text-red-700'
+                                            : result.complaint.priority === 'MEDIUM'
+                                                ? 'bg-amber-100 text-amber-700'
+                                                : 'bg-emerald-100 text-emerald-700'
                                             }`}>
                                             {result.complaint.priority}
                                         </span>
                                     </div>
                                     <div>
-                                        <p className="text-xs text-teal-600 mb-1">Status</p>
-                                        <p className="font-semibold text-teal-900">Pending Review</p>
+                                        <p className="text-xs text-slate-600 mb-1">Status</p>
+                                        <p className="font-semibold text-slate-900">Pending Review</p>
                                     </div>
                                 </div>
 
-                                <div className="mt-4 pt-4 border-t border-teal-200">
-                                    <p className="text-xs text-teal-600 mb-1">AI Summary</p>
-                                    <p className="text-sm text-teal-900">{result.complaint.aiSummary}</p>
+                                <div className="mt-4 pt-4 border-t border-slate-200">
+                                    <p className="text-xs text-slate-600 mb-1">AI Summary</p>
+                                    <p className="text-sm text-slate-900">{result.complaint.aiSummary}</p>
                                 </div>
                             </div>
 
@@ -169,14 +167,14 @@ export default function SubmitComplaint() {
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <button
                                     onClick={handleNewComplaint}
-                                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-teal-700 bg-teal-100 hover:bg-teal-200 rounded-xl transition-colors"
+                                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors"
                                 >
                                     <FileText className="h-4 w-4" />
                                     Submit Another Complaint
                                 </button>
                                 <Link
                                     href="/admin"
-                                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 rounded-xl transition-colors"
+                                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-xl transition-colors"
                                 >
                                     View in Dashboard
                                     <ArrowRight className="h-4 w-4" />
@@ -198,15 +196,15 @@ export default function SubmitComplaint() {
                         </p>
                         <div className="flex items-center justify-center gap-6 text-sm text-slate-500">
                             <span className="flex items-center gap-2">
-                                <Sparkles className="h-4 w-4 text-teal-500 animate-pulse" />
+                                <Sparkles className="h-4 w-4 text-slate-500 animate-pulse" />
                                 Categorizing
                             </span>
                             <span className="flex items-center gap-2">
-                                <Loader className="h-4 w-4 text-teal-500 animate-spin" />
+                                <Loader className="h-4 w-4 text-slate-500 animate-spin" />
                                 Prioritizing
                             </span>
                             <span className="flex items-center gap-2">
-                                <FileText className="h-4 w-4 text-teal-500 animate-pulse" />
+                                <FileText className="h-4 w-4 text-slate-500 animate-pulse" />
                                 Summarizing
                             </span>
                         </div>
@@ -238,7 +236,7 @@ export default function SubmitComplaint() {
                                     value={formData.studentName}
                                     onChange={handleChange}
                                     placeholder="Enter your full name"
-                                    className={`w-full px-4 py-3 border rounded-xl text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all ${errors.studentName ? 'border-red-300 bg-red-50' : 'border-slate-200'
+                                    className={`w-full px-4 py-3 border rounded-xl text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-slate-400 focus:border-transparent transition-all ${errors.studentName ? 'border-red-300 bg-red-50' : 'border-slate-200'
                                         }`}
                                 />
                                 {errors.studentName && (
@@ -262,7 +260,7 @@ export default function SubmitComplaint() {
                                     value={formData.studentEmail}
                                     onChange={handleChange}
                                     placeholder="your.email@college.edu"
-                                    className={`w-full px-4 py-3 border rounded-xl text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all ${errors.studentEmail ? 'border-red-300 bg-red-50' : 'border-slate-200'
+                                    className={`w-full px-4 py-3 border rounded-xl text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-slate-400 focus:border-transparent transition-all ${errors.studentEmail ? 'border-red-300 bg-red-50' : 'border-slate-200'
                                         }`}
                                 />
                                 {errors.studentEmail && (
@@ -284,7 +282,7 @@ export default function SubmitComplaint() {
                                     name="category"
                                     value={formData.category}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-3 border border-slate-200 rounded-xl text-slate-900 focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all appearance-none bg-white"
+                                    className="w-full px-4 py-3 border border-slate-200 rounded-xl text-slate-900 focus:ring-2 focus:ring-slate-400 focus:border-transparent transition-all appearance-none bg-white"
                                 >
                                     <option value="">Select a category (AI will auto-detect if left empty)</option>
                                     {COMPLAINT_CATEGORIES.map(cat => (
@@ -306,7 +304,7 @@ export default function SubmitComplaint() {
                                     onChange={handleChange}
                                     rows={6}
                                     placeholder="Describe your complaint in detail. Include relevant information such as dates, locations, and people involved..."
-                                    className={`w-full px-4 py-3 border rounded-xl text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all resize-none ${errors.complaintText ? 'border-red-300 bg-red-50' : 'border-slate-200'
+                                    className={`w-full px-4 py-3 border rounded-xl text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all resize-none ${errors.complaintText ? 'border-red-300 bg-red-50' : 'border-slate-200'
                                         }`}
                                 />
                                 <div className="flex items-center justify-between mt-2">
@@ -332,7 +330,7 @@ export default function SubmitComplaint() {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white bg-teal-600 hover:bg-teal-700 rounded-xl transition-all shadow-lg shadow-teal-200 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-xl transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 <Send className="h-5 w-5" />
                                 Submit Complaint
@@ -347,8 +345,8 @@ export default function SubmitComplaint() {
                 {/* Info Card */}
                 <div className="mt-8 bg-white rounded-xl border border-slate-200 p-6">
                     <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
-                            <Sparkles className="h-5 w-5 text-teal-600" />
+                        <div className="flex-shrink-0 w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
+                            <Sparkles className="h-5 w-5 text-slate-600" />
                         </div>
                         <div>
                             <h3 className="font-semibold text-slate-900 mb-1">What happens next?</h3>

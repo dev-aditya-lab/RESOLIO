@@ -18,7 +18,7 @@ export default function ComplaintCard({ complaint, onClick }) {
             {/* Header */}
             <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-teal-600 flex items-center justify-center text-white font-semibold text-sm">
+                    <div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-white font-semibold text-sm">
                         {complaint.studentName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
                     </div>
                     <div>
@@ -31,7 +31,7 @@ export default function ComplaintCard({ complaint, onClick }) {
                         </p>
                     </div>
                 </div>
-                <ChevronRight className="h-5 w-5 text-slate-300 group-hover:text-teal-600 transition-colors" />
+                <ChevronRight className="h-5 w-5 text-slate-300 group-hover:text-slate-600 transition-colors" />
             </div>
 
             {/* Badges */}
@@ -50,12 +50,12 @@ export default function ComplaintCard({ complaint, onClick }) {
             </p>
 
             {/* AI Summary */}
-            <div className="bg-teal-50 rounded-lg p-3 border border-teal-100">
+            <div className="bg-slate-50 rounded-lg p-3 border border-slate-200">
                 <div className="flex items-center gap-1.5 mb-1">
-                    <Sparkles className="h-3.5 w-3.5 text-teal-600" />
-                    <span className="text-xs font-semibold text-teal-700">AI Summary</span>
+                    <Sparkles className="h-3.5 w-3.5 text-slate-500" />
+                    <span className="text-xs font-semibold text-slate-600">AI Summary</span>
                 </div>
-                <p className="text-xs text-teal-800">
+                <p className="text-xs text-slate-700">
                     {complaint.aiSummary}
                 </p>
             </div>

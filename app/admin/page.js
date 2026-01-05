@@ -77,8 +77,8 @@ export default function AdminDashboard() {
             label: 'Total Complaints',
             value: stats.total,
             icon: BarChart3,
-            iconColor: 'text-blue-600',
-            bgColor: 'bg-blue-50',
+            iconColor: 'text-slate-600',
+            bgColor: 'bg-slate-100',
         },
         {
             label: 'High Priority',
@@ -117,7 +117,7 @@ export default function AdminDashboard() {
                 <div className="p-8">
                     {/* Stats Cards */}
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                        {statCards.map((stat, index) => {
+                        {statCards.map((stat) => {
                             const Icon = stat.icon;
                             return (
                                 <div
@@ -151,7 +151,7 @@ export default function AdminDashboard() {
                                     placeholder="Search complaints..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                                    className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-slate-400 focus:border-transparent"
                                 />
                             </div>
 
@@ -164,7 +164,7 @@ export default function AdminDashboard() {
                                             key={filter.id}
                                             onClick={() => setPriorityFilter(filter.id)}
                                             className={`px-3 py-2 text-sm font-medium transition-colors ${priorityFilter === filter.id
-                                                    ? 'bg-teal-600 text-white'
+                                                    ? 'bg-slate-900 text-white'
                                                     : 'bg-white text-slate-600 hover:bg-slate-50'
                                                 }`}
                                         >
@@ -177,7 +177,7 @@ export default function AdminDashboard() {
                                 <select
                                     value={statusFilter}
                                     onChange={(e) => setStatusFilter(e.target.value)}
-                                    className="px-3 py-2.5 border border-slate-200 rounded-lg text-sm text-slate-600 focus:ring-2 focus:ring-teal-500 bg-white"
+                                    className="px-3 py-2.5 border border-slate-200 rounded-lg text-sm text-slate-600 focus:ring-2 focus:ring-slate-400 bg-white"
                                 >
                                     {statusFilters.map(filter => (
                                         <option key={filter.id} value={filter.id}>

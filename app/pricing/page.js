@@ -51,8 +51,7 @@ const plans = [
             'Unlimited admin users',
             'Dedicated support',
             'SLA guarantee',
-            'Custom integrations',
-            'On-premise option'
+            'Custom integrations'
         ],
         cta: 'Contact Sales',
         popular: false
@@ -63,43 +62,30 @@ export default function Pricing() {
     return (
         <div className="min-h-screen bg-gray-50">
             <Navbar />
-
             <main className="max-w-6xl mx-auto px-6 py-14">
-                {/* Header */}
                 <div className="text-center mb-14">
-                    <div className="flex justify-center mb-6">
-                        <Image
-                            src="/logo.png"
-                            alt="Resolvo"
-                            width={56}
-                            height={56}
-                            className="rounded-xl"
-                        />
-                    </div>
                     <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                         Simple, Transparent Pricing
                     </h1>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Choose the plan that fits your institution. All plans include AI-powered analysis and a 14-day free trial.
+                        Choose the plan that fits your institution.
                     </p>
                 </div>
 
-                {/* Pricing Cards */}
                 <div className="grid md:grid-cols-3 gap-6 mb-14">
                     {plans.map((plan) => (
                         <div
                             key={plan.name}
-                            className={`bg-white rounded-2xl p-7 border-2 transition-shadow hover:shadow-lg ${plan.popular ? 'border-teal-500 shadow-lg relative' : 'border-gray-200'
+                            className={`bg-white rounded-2xl p-7 border-2 transition-shadow hover:shadow-lg ${plan.popular ? 'border-slate-900 shadow-lg relative' : 'border-gray-200'
                                 }`}
                         >
                             {plan.popular && (
                                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                                    <span className="bg-teal-600 text-white text-xs font-semibold px-4 py-1 rounded-full">
+                                    <span className="bg-slate-900 text-white text-xs font-semibold px-4 py-1 rounded-full">
                                         Most Popular
                                     </span>
                                 </div>
                             )}
-
                             <div className="text-center mb-6">
                                 <h3 className="text-lg font-bold text-gray-900 mb-1">{plan.name}</h3>
                                 <p className="text-gray-600 text-sm mb-4">{plan.description}</p>
@@ -108,19 +94,17 @@ export default function Pricing() {
                                     <span className="text-gray-500 ml-1 text-sm">{plan.period}</span>
                                 </div>
                             </div>
-
                             <ul className="space-y-3 mb-7">
                                 {plan.features.map((feature) => (
                                     <li key={feature} className="flex items-start">
-                                        <Check className="h-4 w-4 text-teal-500 mr-2 flex-shrink-0 mt-0.5" />
+                                        <Check className="h-4 w-4 text-slate-600 mr-2 flex-shrink-0 mt-0.5" />
                                         <span className="text-gray-700 text-sm">{feature}</span>
                                     </li>
                                 ))}
                             </ul>
-
                             <button
                                 className={`w-full py-2.5 rounded-lg font-semibold text-sm transition-colors ${plan.popular
-                                        ? 'bg-teal-600 hover:bg-teal-700 text-white'
+                                        ? 'bg-slate-900 hover:bg-slate-800 text-white'
                                         : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
                                     }`}
                             >
@@ -130,57 +114,41 @@ export default function Pricing() {
                     ))}
                 </div>
 
-                {/* Features Section */}
-                <div className="bg-white rounded-2xl p-8 md:p-10 border border-gray-200">
+                <div className="bg-white rounded-2xl p-8 border border-gray-200">
                     <div className="text-center mb-10">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-3">
-                            All Plans Include
-                        </h2>
+                        <h2 className="text-2xl font-bold text-gray-900 mb-3">All Plans Include</h2>
                     </div>
-
                     <div className="grid md:grid-cols-3 gap-8">
                         <div className="text-center">
-                            <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                                <Sparkles className="h-6 w-6 text-teal-600" />
+                            <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <Sparkles className="h-6 w-6 text-slate-600" />
                             </div>
                             <h3 className="text-base font-semibold text-gray-900 mb-2">AI-Powered Analysis</h3>
-                            <p className="text-gray-600 text-sm">
-                                Automatic categorization and priority detection using advanced AI
-                            </p>
+                            <p className="text-gray-600 text-sm">Automatic categorization and priority detection</p>
                         </div>
-
                         <div className="text-center">
-                            <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                                <Zap className="h-6 w-6 text-emerald-600" />
+                            <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <Zap className="h-6 w-6 text-slate-600" />
                             </div>
                             <h3 className="text-base font-semibold text-gray-900 mb-2">Real-Time Processing</h3>
-                            <p className="text-gray-600 text-sm">
-                                Instant analysis and routing of complaints as they come in
-                            </p>
+                            <p className="text-gray-600 text-sm">Instant analysis and routing of complaints</p>
                         </div>
-
                         <div className="text-center">
-                            <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                                <Shield className="h-6 w-6 text-indigo-600" />
+                            <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <Shield className="h-6 w-6 text-slate-600" />
                             </div>
                             <h3 className="text-base font-semibold text-gray-900 mb-2">Secure & Compliant</h3>
-                            <p className="text-gray-600 text-sm">
-                                Enterprise-grade security with FERPA compliance
-                            </p>
+                            <p className="text-gray-600 text-sm">Enterprise-grade security with FERPA compliance</p>
                         </div>
                     </div>
                 </div>
 
-                {/* CTA Section */}
                 <div className="text-center mt-12">
-                    <p className="text-gray-600 mb-5">
-                        Have questions? Need a custom solution?
-                    </p>
                     <Link
                         href="/submit-complaint"
-                        className="inline-flex items-center space-x-2 bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                        className="inline-flex items-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
                     >
-                        <span>Contact Our Sales Team</span>
+                        <span>Contact Sales</span>
                         <ArrowRight className="h-4 w-4" />
                     </Link>
                 </div>
