@@ -3,7 +3,7 @@
 import { formatDate } from '@/lib/mockData';
 import PriorityBadge from './PriorityBadge';
 import StatusBadge from './StatusBadge';
-import { User, Mail, Tag, Sparkles, ChevronRight } from 'lucide-react';
+import { Mail, Tag, Sparkles, ChevronRight } from 'lucide-react';
 
 export default function ComplaintCard({ complaint, onClick }) {
     const truncatedText = complaint.complaintText.length > 120
@@ -13,16 +13,16 @@ export default function ComplaintCard({ complaint, onClick }) {
     return (
         <div
             onClick={onClick}
-            className="bg-white rounded-xl border border-slate-200 p-5 cursor-pointer card-hover group"
+            className="bg-white rounded-xl border border-slate-200 p-5 cursor-pointer hover:shadow-md hover:border-slate-300 transition-all group"
         >
             {/* Header */}
             <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white font-semibold text-sm">
-                        {complaint.studentName.split(' ').map(n => n[0]).join('').substring(0, 2)}
+                    <div className="w-10 h-10 rounded-full bg-teal-600 flex items-center justify-center text-white font-semibold text-sm">
+                        {complaint.studentName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
                     </div>
                     <div>
-                        <h3 className="font-semibold text-slate-900 group-hover:text-teal-600 transition-colors">
+                        <h3 className="font-semibold text-slate-900">
                             {complaint.studentName}
                         </h3>
                         <p className="text-xs text-slate-500 flex items-center gap-1">
@@ -31,10 +31,10 @@ export default function ComplaintCard({ complaint, onClick }) {
                         </p>
                     </div>
                 </div>
-                <ChevronRight className="h-5 w-5 text-slate-400 group-hover:text-teal-600 group-hover:translate-x-1 transition-all" />
+                <ChevronRight className="h-5 w-5 text-slate-300 group-hover:text-teal-600 transition-colors" />
             </div>
 
-            {/* Badges Row */}
+            {/* Badges */}
             <div className="flex flex-wrap gap-2 mb-3">
                 <PriorityBadge priority={complaint.priority} size="small" />
                 <StatusBadge status={complaint.status} size="small" />
@@ -44,8 +44,8 @@ export default function ComplaintCard({ complaint, onClick }) {
                 </span>
             </div>
 
-            {/* Complaint Preview */}
-            <p className="text-sm text-slate-600 mb-3 line-clamp-2">
+            {/* Text */}
+            <p className="text-sm text-slate-600 mb-3">
                 {truncatedText}
             </p>
 
@@ -55,19 +55,15 @@ export default function ComplaintCard({ complaint, onClick }) {
                     <Sparkles className="h-3.5 w-3.5 text-teal-600" />
                     <span className="text-xs font-semibold text-teal-700">AI Summary</span>
                 </div>
-                <p className="text-xs text-teal-800 line-clamp-2">
+                <p className="text-xs text-teal-800">
                     {complaint.aiSummary}
                 </p>
             </div>
 
             {/* Footer */}
             <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-100">
-                <span className="text-xs text-slate-400">
-                    ID: {complaint.id}
-                </span>
-                <span className="text-xs text-slate-400">
-                    {formatDate(complaint.submittedAt)}
-                </span>
+                <span className="text-xs text-slate-400">{complaint.id}</span>
+                <span className="text-xs text-slate-400">{formatDate(complaint.submittedAt)}</span>
             </div>
         </div>
     );
